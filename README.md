@@ -86,9 +86,13 @@ curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/
 
 <a id="install-node-sh"></a>
 - **install-node.sh**  
-  Installs the latest Node.js LTS release via NodeSource.
+  Install the latest LTS version:
   ```bash
   curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/node/install-node.sh | bash
+  ```
+  Install a specific version (e.g. 18.20.2):
+  ```bash
+  curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/node/install-node.sh | bash -s 18.20.2
   ```
 
 ### 📁 configure/
