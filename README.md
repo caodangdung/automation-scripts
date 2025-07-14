@@ -13,7 +13,8 @@ This repository contains my personal collection of automation scripts for instal
         - [install-docker.sh](#install-docker-sh)  
         - [install-docker-compose.sh](#install-docker-compose-sh)
     - [📂 node/](#📂-node)
-        - [install-node.sh](#install-node-sh)  
+        - [install-node.sh](#install-node-sh)
+        - [install-node-nvm.sh](#install-node-nvm-sh)  
   - [📁 configure/](#📁-configure)
     - [harden-ssh.sh](#harden-ssh.sh)
   - [📁 utils/](#📁-utils)
@@ -45,6 +46,7 @@ automation-scripts/
       install-docker-compose.sh
     node/
       install-node.sh
+      install-node-nvm.sh
   configure/
     harden-ssh.sh
   utils/
@@ -93,6 +95,16 @@ curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/
   Install a specific version (e.g. 18.20.2):
   ```bash
   curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/node/install-node.sh | bash -s 18.20.2
+  ```
+<a id="install-node-nvm-sh"></a>
+- **install-node-nvm.sh**  
+  Install the latest LTS version:
+  ```bash
+  curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/node/install-node-nvm.sh | bash
+  ```
+  Install a specific version (e.g. 18.20.2):
+  ```bash
+  curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/node/install-node-nvm.sh | bash -s 18.20.2
   ```
 
 ### 📁 configure/
