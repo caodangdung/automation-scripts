@@ -11,8 +11,8 @@ NVM_DIR="$HOME/.nvm"
 # Install nvm if not already installed
 install_nvm() {
   if [ ! -d "$NVM_DIR" ]; then
-    echo "📥 Installing nvm..."
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+    echo "📥 Installing latest version of nvm..."
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
   else
     echo "✅ nvm already installed."
   fi
