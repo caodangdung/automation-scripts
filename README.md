@@ -94,7 +94,7 @@ curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/
 - **install-nfs-server.sh**  
   Installs NFS Server:
   ```bash
-  curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/nfs/install-nfs-server.sh | bash
+  bash -i <(curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/nfs/install-nfs-server.sh)
   ```
 
 #### 📂 node/
