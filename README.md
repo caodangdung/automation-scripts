@@ -13,7 +13,8 @@ This repository contains my personal collection of automation scripts for instal
         - [install-docker.sh](#install-docker-sh)  
         - [install-docker-compose.sh](#install-docker-compose-sh)
     - [📂 nfs/](#📂-nfs)
-        - [install-nfs-server.sh](#install-nfs-server-sh) 
+        - [install-nfs-server.sh](#install-nfs-server-sh)
+        - [install-nfs-client.sh](#install-nfs-client-sh)
     - [📂 node/](#📂-node)
         - [install-node.sh](#install-node-sh)
         - [install-node-nvm.sh](#install-node-nvm-sh)  
@@ -48,6 +49,7 @@ automation-scripts/
       install-docker-compose.sh
     nfs/
       install-nfs-server.sh
+      install-nfs-client.sh
     node/
       install-node.sh
       install-node-nvm.sh
@@ -95,6 +97,12 @@ curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/
   Installs NFS Server:
   ```bash
   bash -i <(curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/nfs/install-nfs-server.sh)
+  ```
+<a id="install-nfs-client-sh"></a>
+- **install-nfs-client.sh**  
+  Installs NFS Client:
+  ```bash
+  bash -i <(curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/nfs/install-nfs-client.sh)
   ```
 
 #### 📂 node/
