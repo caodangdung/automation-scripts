@@ -12,6 +12,8 @@ This repository contains my personal collection of automation scripts for instal
     - [📂 docker/](#📂-docker)
         - [install-docker.sh](#install-docker-sh)  
         - [install-docker-compose.sh](#install-docker-compose-sh)
+    - [📂 nfs/](#📂-nfs)
+        - [install-nfs-server.sh](#install-nfs-server-sh) 
     - [📂 node/](#📂-node)
         - [install-node.sh](#install-node-sh)
         - [install-node-nvm.sh](#install-node-nvm-sh)  
@@ -44,6 +46,8 @@ automation-scripts/
     docker/
       install-docker.sh
       install-docker-compose.sh
+    nfs/
+      install-nfs-server.sh
     node/
       install-node.sh
       install-node-nvm.sh
@@ -72,16 +76,25 @@ curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/
 
 <a id="install-docker-sh"></a>
 - **install-docker.sh**  
-  Installs Docker Engine and its dependencies on Ubuntu.
+  Installs Docker Engine and its dependencies on Ubuntu:
   ```bash
   curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/docker/install-docker.sh | bash
   ```
 
 <a id="install-docker-compose-sh"></a>
 - **install-docker-compose.sh**  
-  Downloads and installs Docker Compose from the official GitHub releases.
+  Downloads and installs Docker Compose from the official GitHub releases:
   ```bash
   curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/docker/install-docker-compose.sh | bash
+  ```
+
+#### 📂 nfs/
+
+<a id="install-nfs-server-sh"></a>
+- **install-nfs-server.sh**  
+  Installs NFS Server:
+  ```bash
+  curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/nfs/install-nfs-server.sh | bash
   ```
 
 #### 📂 node/
