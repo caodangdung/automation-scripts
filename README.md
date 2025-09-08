@@ -9,6 +9,17 @@ This repository contains my personal collection of automation scripts for instal
 - [🛠️ Usage](#🛠️-usage)
 - [📜 Available Scripts](#📜-available-scripts)
   - [📁 install/](#📁-install)
+    - [📂 database/](#📂-database)
+        - [install-cassandra.sh](#install-cassandra-sh)
+        - [install-cloudbeaver.sh](#install-cloudbeaver-sh)
+        - [install-mariadb.sh](#install-mariadb-sh)
+        - [install-memcached.sh](#install-memcached-sh)
+        - [install-mongodb.sh](#install-mongodb-sh)
+        - [install-mysql.sh](#install-mysql-sh)
+        - [install-oracle.sh](#install-oracle-sh)
+        - [install-postgres.sh](#install-postgres-sh)
+        - [install-redis.sh](#install-redis-sh)
+        - [install-sqlserver.sh](#install-sqlserver-sh)
     - [📂 docker/](#📂-docker)
         - [install-docker.sh](#install-docker-sh)  
         - [install-docker-compose.sh](#install-docker-compose-sh)
@@ -44,6 +55,17 @@ This repository contains my personal collection of automation scripts for instal
 ```plaintext
 automation-scripts/
   install/
+    database/
+      install-cassandra.sh
+      install-cloudbeaver.sh
+      install-mariadb.sh
+      install-memcached.sh
+      install-mongodb.sh
+      install-mysql.sh
+      install-oracle.sh
+      install-postgres.sh
+      install-redis.sh
+      install-sqlserver.sh
     docker/
       install-docker.sh
       install-docker-compose.sh
@@ -74,11 +96,83 @@ curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/
 
 ### 📁 install/
 
+#### 📂 database/
+
+<a id="install-cassandra.sh"></a>
+- **install-cassandra.sh**  
+  Installs Cassandra:
+  ```bash
+  bash -i <(curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/database/install-cassandra.sh)
+  ```
+
+<a id="install-cloudbeaver.sh"></a>
+- **install-cloudbeaver.sh**  
+  Installs Cloudbeaver:
+  ```bash
+  bash -i <(curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/database/install-cloudbeaver.sh)
+  ```
+
+<a id="install-mariadb.sh"></a>
+- **install-mariadb.sh**  
+  Installs Mariadb:
+  ```bash
+  bash -i <(curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/database/install-mariadb.sh)
+  ```
+
+<a id="install-memcached.sh"></a>
+- **install-memcached.sh**  
+  Installs Memcached:
+  ```bash
+  bash -i <(curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/database/install-memcached.sh)
+  ```
+
+<a id="install-mongodb.sh"></a>
+- **install-mongodb.sh**  
+  Installs Mongodb:
+  ```bash
+  bash -i <(curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/database/install-mongodb.sh)
+  ```
+
+<a id="install-mysql.sh"></a>
+- **install-mysql.sh**  
+  Installs Mysql:
+  ```bash
+  bash -i <(curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/database/install-mysql.sh)
+  ```
+
+<a id="install-oracle.sh"></a>
+- **install-oracle.sh**  
+  Installs Oracle:
+  ```bash
+  bash -i <(curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/database/install-oracle.sh)
+  ```
+
+<a id="install-postgres.sh"></a>
+- **install-postgres.sh**  
+  Installs Postgres:
+  ```bash
+  bash -i <(curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/database/install-postgres.sh)
+  ```
+
+<a id="install-redis.sh"></a>
+- **install-redis.sh**  
+  Installs Redis:
+  ```bash
+  bash -i <(curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/database/install-redis.sh)
+  ```
+
+<a id="install-sqlserver.sh"></a>
+- **install-sqlserver.sh**  
+  Installs Sqlserver:
+  ```bash
+  bash -i <(curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/database/install-sqlserver.sh)
+  ```
+
 #### 📂 docker/
 
 <a id="install-docker-sh"></a>
 - **install-docker.sh**  
-  Installs Docker Engine and its dependencies on Ubuntu:
+  Installs Docker Engine and its dependencies:
   ```bash
   curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/docker/install-docker.sh | bash
   ```
