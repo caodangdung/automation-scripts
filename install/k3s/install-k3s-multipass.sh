@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 show_help() {
   cat <<EOF
 Usage: $0 --control-plane-nodes <nodes> --worker-nodes <count> --name <name>
@@ -7,6 +9,7 @@ Usage: $0 --control-plane-nodes <nodes> --worker-nodes <count> --name <name>
           [--worker-cpus <cpus>] [--worker-memory <memory>]
           [--ssh-public-key <path>] [--ssh-private-key <path>]
           [--control-plane-disk <disk>] [--worker-disk <disk>]
+          [--user <name>]
           [-h|--help]
 
 Required arguments:
@@ -23,15 +26,68 @@ Optional:
   --worker-disk <disk>              Disk space to allocate (e.g., 2G, 512M) (default: 5G)
   --ssh-public-key <path>           Path to SSH public key (default: ~/.ssh/id_rsa.pub)
   --ssh-private-key <path>          Path to SSH private key (default: ~/.ssh/id_rsa)
+  --user <name>                     SSH user for Multipass nodes (default: current user)
   -h, --help                        Show this help message and exit
 EOF
   exit 1
 }
 
+install_snapd() {
+  if command -v snap >/dev/null 2>&1; then
+    return 0
+  fi
+
+  if ! command -v apt-get >/dev/null 2>&1; then
+    echo "Error: apt-get is required to install snapd automatically." >&2
+    return 1
+  fi
+
+  echo "⚙️  Installing snapd..."
+  sudo apt-get update
+  sudo apt-get install -y snapd
+}
+
+install_multipass() {
+  if command -v multipass >/dev/null 2>&1; then
+    echo "✅ Multipass is already installed: $(multipass version 2>&1 | head -n 1)"
+    return 0
+  fi
+
+  if ! command -v snap >/dev/null 2>&1; then
+    install_snapd
+  fi
+
+  if command -v snap >/dev/null 2>&1; then
+    echo "⚙️  Installing Multipass via snap..."
+    sudo snap install multipass --classic --channel=stable
+    return 0
+  fi
+
+  echo "⚠️  Snap is not available. Falling back to Multipass installer..."
+  curl -fsSL https://multipass.run/install.sh | sudo bash
+}
+
+install_k3sup() {
+  if command -v k3sup >/dev/null 2>&1; then
+    echo "✅ k3sup is already installed: $(k3sup version 2>&1 | head -n 1)"
+    return 0
+  fi
+
+  echo "⚙️  Installing k3sup..."
+  local url="https://github.com/alexellis/k3sup/releases/latest/download/k3sup"
+  local tmpfile
+  tmpfile=$(mktemp)
+  trap 'rm -f "$tmpfile"' EXIT
+  curl -fsSL "$url" -o "$tmpfile"
+  chmod +x "$tmpfile"
+  sudo install -m 0755 "$tmpfile" /usr/local/bin/k3sup
+  trap - EXIT
+}
+
 # Initialize variables
 SSH_PUBLIC_KEY_PATH="$HOME/.ssh/id_rsa.pub"
 SSH_PRIVATE_KEY_PATH="$HOME/.ssh/id_rsa"
-USER="ubuntu"
+USER="$(whoami)"
 CONTROL_PLANE_CPUS="1"
 CONTROL_PLANE_MEMORY="1G"
 CONTROL_PLANE_DISK="5G"
@@ -56,6 +112,7 @@ while [[ "$#" -gt 0 ]]; do
     --worker-cpus) WORKER_CPUS="$2"; shift 2 ;;
     --worker-memory) WORKER_MEMORY="$2"; shift 2 ;;
     --worker-disk) WORKER_DISK="$2"; shift 2 ;;
+    --user) USER="$2"; shift 2 ;;
     -h|--help) show_help ;;
     *) echo "Unknown option: $1"; show_help ;;
   esac
@@ -104,6 +161,9 @@ if [ ! -f "$SSH_PRIVATE_KEY_PATH" ]; then
     echo "Error: SSH private key file not found at $SSH_PRIVATE_KEY_PATH"
     exit 1
 fi
+
+install_multipass
+install_k3sup
 
 createInstance () {
     if ! multipass list | grep "$1" > /dev/null 2>&1; then
