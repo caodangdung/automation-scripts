@@ -30,7 +30,6 @@ if ! command -v snap >/dev/null 2>&1; then
   if command -v apt-get >/dev/null 2>&1; then
     sudo apt-get update
     sudo apt-get install -y snapd
-    sudo systemctl enable --now snapd.socket || true
   else
     echo "Error: apt-get is required to install snapd on this system." >&2
     exit 1
