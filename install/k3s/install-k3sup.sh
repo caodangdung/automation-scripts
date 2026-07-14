@@ -20,14 +20,7 @@ if [[ "$1" == "-h" || "$1" == "--help" ]]; then
   show_help
 fi
 
-ARCH=$(uname -m)
-case "$ARCH" in
-  x86_64|amd64) ARCH=amd64 ;;
-  aarch64|arm64) ARCH=arm64 ;;
-  *) echo "Error: unsupported architecture $ARCH" >&2; exit 1 ;;
-esac
-
-URL="https://github.com/alexellis/k3sup/releases/latest/download/k3sup-linux-$ARCH"
+URL="https://github.com/alexellis/k3sup/releases/latest/download/k3sup"
 
 echo "⚙️  Installing k3sup to $DEST..."
 
