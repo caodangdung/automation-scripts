@@ -28,7 +28,9 @@ This repository contains my personal collection of automation scripts for instal
         - [install-nfs-client.sh](#install-nfs-client-sh)
     - [📂 node/](#📂-node)
         - [install-node.sh](#install-node-sh)
-        - [install-node-nvm.sh](#install-node-nvm-sh)  
+        - [install-node-nvm.sh](#install-node-nvm-sh)
+    - [📂 k3s/](#📂-k3s)
+        - [install-k3s-multipass.sh](#install-k3s-multipass-sh)
   - [📁 configure/](#📁-configure)
     - [harden-ssh.sh](#harden-ssh.sh)
   - [📁 utils/](#📁-utils)
@@ -75,10 +77,15 @@ automation-scripts/
     node/
       install-node.sh
       install-node-nvm.sh
+    k3s/
+      install-k3s-multipass.sh
+      install-k3sup.sh
+      install-multipass.sh
   configure/
     harden-ssh.sh
   utils/
     cleanup.sh
+    gen-ssh-key.sh
   LICENSE
   README.md
 ```
@@ -218,8 +225,40 @@ curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/
   curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/node/install-node-nvm.sh | bash
   ```
   Install a specific version (e.g. 18.20.2):
+
+#### 📂 k3s/
+
+<a id="install-k3s-multipass-sh"></a>
+- **install-k3s-multipass.sh**
+  Installs k3s inside Multipass VMs using k3sup:
   ```bash
-  curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/node/install-node-nvm.sh | bash -s 18.20.2
+  curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/k3s/install-k3s-multipass.sh | bash -s -- --control-plane-nodes 1 --worker-nodes 2 --name mycluster
+  ```
+  Or with custom resource settings and SSH key paths:
+  ```bash
+  curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/k3s/install-k3s-multipass.sh | bash -s -- --control-plane-nodes 1 --worker-nodes 2 --name mycluster --control-plane-cpus 2 --control-plane-memory 2G --worker-cpus 1 --worker-memory 1G --ssh-public-key ~/.ssh/id_rsa.pub --ssh-private-key ~/.ssh/id_rsa
+  ```
+
+<a id="install-k3sup-sh"></a>
+- **install-k3sup.sh**
+  Installs k3sup locally:
+  ```bash
+  curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/k3s/install-k3sup.sh | bash
+  ```
+  Or install to a custom path:
+  ```bash
+  curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/k3s/install-k3sup.sh | bash -s /usr/local/bin/k3sup
+  ```
+
+<a id="install-multipass-sh"></a>
+- **install-multipass.sh**
+  Installs Multipass locally:
+  ```bash
+  curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/k3s/install-multipass.sh | bash
+  ```
+  Or install a specific snap channel:
+  ```bash
+  curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/k3s/install-multipass.sh | bash -s candidate
   ```
 
 ### 📁 configure/
@@ -238,6 +277,17 @@ curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/
   Removes unused packages and cleans up package caches.
   ```bash
   curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/utils/cleanup.sh | sudo bash
+  ```
+
+<a id="gen-ssh-key.sh"></a>
+- **gen-ssh-key.sh**  
+  Generates an SSH key pair.
+  ```bash
+  curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/utils/gen-ssh-key.sh | bash
+  ```
+  Use a custom key path or email/comment:
+  ```bash
+  curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/utils/gen-ssh-key.sh | bash -s ~/.ssh/id_rsa_work email@example.com
   ```
 
 ## 🔒 Security Notes
