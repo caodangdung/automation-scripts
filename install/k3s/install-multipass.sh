@@ -25,12 +25,19 @@ if command -v multipass >/dev/null 2>&1; then
   exit 0
 fi
 
-if command -v snap >/dev/null 2>&1; then
-  echo "⚙️  Installing Multipass via snap ($CHANNEL)..."
-  sudo snap install multipass --classic --channel="$CHANNEL"
-else
-  echo "⚠️  Snap is not available. Falling back to Multipass install script..."
-  curl -fsSL https://multipass.run/install.sh | sudo bash
+if ! command -v snap >/dev/null 2>&1; then
+  echo "⚠️  Snap is not available. Installing snapd..."
+  if command -v apt-get >/dev/null 2>&1; then
+    sudo apt-get update
+    sudo apt-get install -y snapd
+    sudo systemctl enable --now snapd.socket || true
+  else
+    echo "Error: apt-get is required to install snapd on this system." >&2
+    exit 1
+  fi
 fi
+
+echo "⚙️  Installing Multipass via snap ($CHANNEL)..."
+sudo snap install multipass --classic --channel="$CHANNEL"
 
 echo "✅ Multipass installed successfully."
