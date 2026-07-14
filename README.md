@@ -34,9 +34,9 @@ This repository contains my personal collection of automation scripts for instal
         - [install-k3sup.sh](#install-k3sup-sh)
         - [install-multipass.sh](#install-multipass-sh)
   - [📁 configure/](#📁-configure)
-    - [harden-ssh.sh](#harden-ssh.sh)
+    - [harden-ssh.sh](#harden-ssh-sh)
   - [📁 utils/](#📁-utils)
-    - [cleanup.sh](#cleanup.sh)
+    - [cleanup.sh](#cleanup-sh)
     - [gen-ssh-key.sh](#gen-ssh-key-sh)
 - [🔒 Security Notes](#🔒-security-notes)
 - [📄 License](#📄-license)
@@ -266,7 +266,7 @@ curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/
 
 ### 📁 configure/
 
-<a id="harden-ssh.sh"></a>
+<a id="harden-ssh-sh"></a>
 - **harden-ssh.sh**  
   Hardens SSH configuration by disabling root login and password-based authentication.
   ```bash
@@ -275,14 +275,14 @@ curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/
 
 ### 📁 utils/
 
-<a id="cleanup.sh"></a>
+<a id="cleanup-sh"></a>
 - **cleanup.sh**  
   Removes unused packages and cleans up package caches.
   ```bash
   curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/utils/cleanup.sh | sudo bash
   ```
 
-<a id="gen-ssh-key.sh"></a>
+<a id="gen-ssh-key-sh"></a>
 - **gen-ssh-key.sh**  
   Generates an SSH key pair.
   ```bash
