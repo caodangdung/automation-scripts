@@ -237,9 +237,9 @@ curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/
   ```bash
   curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/k3s/install-k3s-multipass.sh | bash -s -- --control-plane-nodes 1 --worker-nodes 2 --name mycluster
   ```
-  Or with custom resource settings and SSH key paths:
+  Or with custom resource settings, disk sizes, SSH key paths, and user:
   ```bash
-  curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/k3s/install-k3s-multipass.sh | bash -s -- --control-plane-nodes 1 --worker-nodes 2 --name mycluster --control-plane-cpus 2 --control-plane-memory 2G --worker-cpus 1 --worker-memory 1G --ssh-public-key ~/.ssh/id_rsa.pub --ssh-private-key ~/.ssh/id_rsa
+  curl -sSL https://raw.githubusercontent.com/caodangdung/automation-scripts/main/install/k3s/install-k3s-multipass.sh | bash -s -- --control-plane-nodes 1 --worker-nodes 2 --name mycluster --control-plane-cpus 2 --control-plane-memory 2G --control-plane-disk 10G --worker-cpus 1 --worker-memory 1G --worker-disk 20G --ssh-public-key ~/.ssh/id_rsa.pub --ssh-private-key ~/.ssh/id_rsa --user ubuntu
   ```
 
 <a id="install-k3sup-sh"></a>
